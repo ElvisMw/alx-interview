@@ -2,7 +2,8 @@
 
 def pascal_triangle(n):
     """
-    Returns the first n rows of Pascal's triangle as a list of lists of integers.
+    Returns the first n rows of Pascal's triangle
+    as a list of lists of integers.
 
     n must be a positive integer.
     """
@@ -28,4 +29,3 @@ def pascal_triangle(n):
         triangle.append(row)
 
     return triangle
-
