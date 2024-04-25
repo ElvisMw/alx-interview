@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 0-main
 """
@@ -15,3 +15,4 @@ def print_triangle(triangle):
 
 if __name__ == "__main__":
     print_triangle(pascal_triangle(5))
+

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 def pascal_triangle(n):
     """
@@ -28,3 +28,4 @@ def pascal_triangle(n):
         triangle.append(row)
 
     return triangle
+
