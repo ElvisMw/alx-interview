@@ -2,6 +2,7 @@
 
 import math
 
+
 def pascal_triangle(n):
     """
     Generates Pascal's triangle up to the nth row.
@@ -12,16 +13,19 @@ def pascal_triangle(n):
     Returns:
         list of lists of integers: Pascal's triangle.
     """
-    if not isinstance(n, int) or n <= 0:
-        raise ValueError("n must be a positive integer")
+    try:
+        # Error and Exception Handling
+        if not isinstance(n, int) or n <= 0:
+            raise ValueError(f"n must be a positive integer, but received: {n}")
+    except TypeError:
+        raise TypeError("Input must be an integer")
 
     triangle = []
 
     for row_num in range(n):
-        row = []
-        for k in range(row_num + 1):
-            coefficient = math.comb(row_num, k)
-            row.append(coefficient)
+        # Lists and List Comprehensions
+        # Utilizing list comprehension for generating each row
+        row = [math.comb(row_num, k) for k in range(row_num + 1)]
         triangle.append(row)
 
     return triangle
