@@ -25,7 +25,8 @@ def pascal_triangle(n):
 
         row = [1]
         for j in range(1, i):
-            """ The (i, j)-th entry of Pascal's triangle is the sum of the (i-1, j-1)
+            """ The (i, j)-th entry of Pascal's triangle is
+            the sum of the (i-1, j-1)
             and (i-1, j) entries """
             row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
         row.append(1)
