@@ -16,7 +16,7 @@ def pascal_triangle(n):
     try:
         # Error and Exception Handling
         if not isinstance(n, int) or n <= 0:
-            raise ValueError(f"n must be a positive integer, but received: {n}")
+            raise ValueError(f"n must be positive integer, but received: {n}")
     except TypeError:
         raise TypeError("Input must be an integer")
 
