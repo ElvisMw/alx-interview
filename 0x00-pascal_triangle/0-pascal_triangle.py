@@ -45,9 +45,9 @@ def pascal_triangle(n):
         """ Create a row (rowNm) of n ones """
         row = [1] * (rowNm + 1)
         """ Calculate the values of the row using the rule """
-        for j in range(1, rowNm):
-            if rowNm - 1 < len(triangle) and j - 1 < len(triangle[rowNm - 1]):
-                row[j] = triangle[rowNm - 1][j - 1] + triangle[rowNm - 1][j]
+        for e in range(1, rowNm):
+            if rowNm - 1 < len(triangle) and e - 1 < len(triangle[rowNm - 1]):
+                row[e] = triangle[rowNm - 1][e - 1] + triangle[rowNm - 1][e]
         """ Append the row to the triangle """
         triangle.append(row)
 
