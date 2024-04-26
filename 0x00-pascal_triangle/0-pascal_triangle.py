@@ -23,13 +23,3 @@ def generate_pascal_triangle(n):
         triangle.append(row)
 
     return triangle
-
-
-if __name__ == "__main__":
-    # Test cases
-    tests = [5, 1, 0, 10, 100]
-    for test in tests:
-        print(f"Pascal's triangle for n = {test}:")
-        for row in generate_pascal_triangle(test):
-            print(row)
-        print()
