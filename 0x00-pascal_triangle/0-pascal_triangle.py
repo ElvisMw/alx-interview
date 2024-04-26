@@ -1,25 +1,54 @@
 #!/usr/bin/python3
 
-def generate_pascal_triangle(n):
-    """
-    Generates Pascal's triangle up to the nth row.
+"""
+Generate Pascal's triangle.
+
+Pascal's triangle is a triangular array of numbers.
+It is constructed with the following rules:
+
+* The first row consists of one 1.
+* Each subsequent row is constructed by adding the number above
+and to the left to the number above and to the right.
+* The process is repeated until the desired number of rows is reached.
+
+Arguments:
+    n (int): Number of rows in the Pascal's triangle.
+
+Returns:
+    List[List[int]]: A Pascal's triangle of size n.
+
+Raises:
+    ValueError: If n is a negative integer.
+
+"""
+
+
+def pascal_triangle(n):
+    """Generate Pascal's triangle.
 
     Args:
-        n (int): Number of rows for Pascal's triangle.
+        n (int): Number of rows in the Pascal's triangle.
 
     Returns:
-        list of lists of integers: Pascal's triangle.
+        List[List[int]]: A Pascal's triangle of size n.
+
+    Raises:
+        ValueError: If n is a negative integer.
+
     """
     if n < 0:
-        raise ValueError(f"n must be a non-negative integer, but received: {n}")
+        raise ValueError(f"n must be a non-negative integer, but got: {n}")
 
     triangle = []
 
-    for row_num in range(n):
-        row = [1] * (row_num + 1)
-        for j in range(1, row_num):
-            if row_num - 1 < len(triangle) and j - 1 < len(triangle[row_num - 1]):
-                row[j] = triangle[row_num - 1][j - 1] + triangle[row_num - 1][j]
+    for rowNm in range(n):
+        """ Create a row of n ones """
+        row = [1] * (rowNm + 1)
+        """ Calculate the values of the row using the rule """
+        for j in range(1, rowNm):
+            if rowNm - 1 < len(triangle) and j - 1 < len(triangle[rowNm - 1]):
+                row[j] = triangle[rowNm - 1][j - 1] + triangle[rowNm - 1][j]
+        """ Append the row to the triangle """
         triangle.append(row)
 
     return triangle
