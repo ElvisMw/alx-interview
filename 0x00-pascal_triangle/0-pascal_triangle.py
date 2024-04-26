@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-def pascal_triangle(n):
+def generate_pascal_triangle(n):
     """
     Generates Pascal's triangle up to the nth row.
 
@@ -10,11 +10,8 @@ def pascal_triangle(n):
     Returns:
         list of lists of integers: Pascal's triangle.
     """
-    try:
-        if not isinstance(n, int) or n <= 0:
-            raise ValueError(f"n must be a positive integer, but received: {n}")
-    except TypeError:
-        raise TypeError("Input must be an integer")
+    if n < 0:
+        raise ValueError(f"n must be a non-negative integer, but received: {n}")
 
     triangle = []
 
@@ -32,6 +29,6 @@ if __name__ == "__main__":
     tests = [5, 1, 0, 10, 100]
     for test in tests:
         print(f"Pascal's triangle for n = {test}:")
-        for row in pascal_triangle(test):
+        for row in generate_pascal_triangle(test):
             print(row)
         print()
