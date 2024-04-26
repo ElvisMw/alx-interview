@@ -42,7 +42,7 @@ def pascal_triangle(n):
     triangle = []
 
     for rowNm in range(n):
-        """ Create a row of n ones """
+        """ Create a row (rowNm) of n ones """
         row = [1] * (rowNm + 1)
         """ Calculate the values of the row using the rule """
         for j in range(1, rowNm):
