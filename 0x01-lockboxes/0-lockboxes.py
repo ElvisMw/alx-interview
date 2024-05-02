@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-Check if all the boxes can be unlocked
+Check if all the boxes can be unlocked.
 """
 
 
