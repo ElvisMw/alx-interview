@@ -35,7 +35,7 @@ True
 True
 False
 ```
-
+<hr>
 To successfully solve this project, you will need a solid understanding of the following concepts:
 
 <l><li>Lists and List Manipulation
