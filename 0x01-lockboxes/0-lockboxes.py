@@ -20,7 +20,7 @@ def canUnlockAll(boxes):
         """ No boxes, no way to unlock them all """
         return False
 
-    n = len(boxes)
+    e = len(boxes)
     visited = {0}
     keys_queue = list(boxes[0])
 
@@ -39,8 +39,8 @@ def canUnlockAll(boxes):
         boxes, then all the boxes can be unlocked.
         """
         key = keys_queue.pop(0)
-        if key < n and key not in visited:
+        if key < e and key not in visited:
             visited.add(key)
             keys_queue.extend(set(boxes[key]) - visited)
 
-    return len(visited) == n
+    return len(visited) == e
