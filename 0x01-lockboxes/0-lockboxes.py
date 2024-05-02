@@ -44,4 +44,3 @@ def canUnlockAll(boxes):
             keys_queue.extend(set(boxes[key]) - visited)
 
     return len(visited) == n
-
