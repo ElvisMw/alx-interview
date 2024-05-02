@@ -50,4 +50,4 @@ To successfully solve this project, you will need a solid understanding of the f
 <l><li>Big O Notation
 <l><li>Recursion in Python
 <l><li>Python Queue and Stack
-<l><li>Python Sets</l>
+<l><li>Python Sets
