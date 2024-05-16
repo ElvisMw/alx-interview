@@ -31,14 +31,8 @@ def print_summary(response_counts, total_size):
 
 
 total_size = 0
-response_counts = {"200": 0,  # OK
-                    "301": 0,  # Moved Permanently
-                    "400": 0,  # Bad Request
-                    "401": 0,  # Unauthorized
-                    "403": 0,  # Forbidden
-                    "404": 0,  # Not Found
-                    "405": 0,  # Method Not Allowed
-                    "500": 0}  # Internal Server Error
+response_counts = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
+
 
 try:
     for line in sys.stdin:
