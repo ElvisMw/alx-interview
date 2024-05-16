@@ -31,8 +31,16 @@ def print_summary(response_counts, total_size):
 
 
 total_size = 0
-response_counts = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0, "404": 0, "405": 0, "500": 0}
-
+response_counts = {
+    "200": 0,
+    "301": 0,
+    "400": 0,
+    "401": 0,
+    "403": 0,
+    "404": 0,
+    "405": 0,
+    "500": 0
+}
 
 try:
     for line in sys.stdin:
