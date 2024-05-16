@@ -21,11 +21,10 @@ def print_summary(response_counts, total_size):
 
     Args:
         response_counts: A dictionary of HTTP response counts.
-        total_size: The total file size.
+        total_size: The total  file size.
     """
     print(f"File size: {total_size}")
-    key = x
-    val = y
+    print("Total: {}".format(sum(response_counts.values())))
     for x, y in sorted(response_counts.items()):
         if y != 0:
             print("{}: {}".format(x, y))
