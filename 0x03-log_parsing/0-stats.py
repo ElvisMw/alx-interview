@@ -14,6 +14,8 @@ Usage:
 """
 
 import sys
+import signal
+import re
 
 
 def print_summary(response_counts, total_size):
@@ -21,16 +23,22 @@ def print_summary(response_counts, total_size):
 
     Args:
         response_counts: A dictionary of HTTP response counts.
-        total_size: The total  file size.
+        total_size: The total file size.
     """
     print(f"File size: {total_size}")
-    print("Total: {}".format(sum(response_counts.values())))
-    for x, y in sorted(response_counts.items()):
-        if y != 0:
-            print("{}: {}".format(x, y))
+    for code, count in sorted(response_counts.items(),
+                              key=lambda x: int(x[0])):
+        if count:
+            print(f"{code}: {count}")
 
 
-total_size = 0
+def handle_interrupt(signum, frame):
+    """Handle interrupt signal (CTRL + C)."""
+    print_summary(response_counts, total_size)
+    sys.exit(0)
+
+
+""" Initialize variables """
 response_counts = {
     "200": 0,
     "301": 0,
@@ -41,21 +49,32 @@ response_counts = {
     "405": 0,
     "500": 0
 }
+total_size = 0
+line_count = 0
+
+""" Set up signal handler for interrupt (CTRL + C) """
+signal.signal(signal.SIGINT, handle_interrupt)
 
 try:
     for line in sys.stdin:
-        line_data = line.split()
-        size, status_code = line_data[::-1]
-        total_size += int(size)
-
-        if status_code in response_counts:
-            response_counts[status_code] += 1
-
-        if response_counts["200"] == 10:
+        line_count += 1
+        if line_count % 10 == 0:
             print_summary(response_counts, total_size)
-            total_size = 0
-            for x in response_counts:
-                response_counts[x] = 0
 
-finally:
+        """ Parse the line using regex """
+        match = re.match(
+            r'^\S+ - \[\S+\] "GET /projects/260 HTTP/1.1" (\d+) (\d+)$', line
+        )
+        if match:
+            status_code, file_size = match.groups()
+            total_size += int(file_size)
+            if status_code in response_counts:
+                response_counts[status_code] += 1
+
+    """ Print the final summary """
     print_summary(response_counts, total_size)
+
+except KeyboardInterrupt:
+    """ Handle keyboard interruption (CTRL + C) """
+    print_summary(response_counts, total_size)
+    sys.exit(0)
