@@ -43,7 +43,8 @@ def format_and_print_solutions(solutions):
 
 
 def main():
-    """Main function to check command line arguments
+    """
+    Main function to check command line arguments
     and solve the N Queens problem"""
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
