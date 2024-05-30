@@ -7,16 +7,16 @@ import sys
 def is_safe(board, row, col):
     """Check if it's safe to place a queen at board[row][col]"""
     for i in range(row):
-        if board[i] == col or \
-           board[i] - i == col - row or \
-           board[i] + i == col + row:
+        if col == board[i] or \
+           col - row == board[i] - i or \
+           col + row == board[i] + i:
             return False
     return True
 
 
 def solve_nqueens(n):
     """Solve the N Queens problem and return all solutions"""
-    def backtrack(row):
+    def place_queens(row):
         """Backtracking function to solve the N Queens problem"""
         if row == n:
             solutions.append(board[:])
@@ -24,26 +24,27 @@ def solve_nqueens(n):
         for col in range(n):
             if is_safe(board, row, col):
                 board[row] = col
-                backtrack(row + 1)
+                place_queens(row + 1)
                 board[row] = -1
 
     solutions = []
     board = [-1] * n
-    backtrack(0)
+    place_queens(0)
     return solutions
 
 
-def print_solutions(solutions):
-    """Print all solutions in the required format"""
+def format_and_print_solutions(solutions):
+    """Format and print all solutions in the required format"""
     for solution in solutions:
-        formatted_solution = [[i, solution[i]] for i in range(len(solution))]
-        print(formatted_solution)
+        result = []
+        for row, col in enumerate(solution):
+            result.append([row, col])
+        print(result)
 
 
 def main():
-    """
-    Main function to check command line arguments and
-    solve the N Queens problem"""
+    """Main function to check command line arguments
+    and solve the N Queens problem"""
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
@@ -59,7 +60,7 @@ def main():
         sys.exit(1)
 
     solutions = solve_nqueens(n)
-    print_solutions(solutions)
+    format_and_print_solutions(solutions)
 
 
 if __name__ == "__main__":
