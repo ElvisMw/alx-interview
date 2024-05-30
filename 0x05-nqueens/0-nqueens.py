@@ -2,9 +2,10 @@
 """Solve the N Queens problem using backtracking."""
 
 import sys
+from typing import List
 
 
-def is_safe(board, row, col):
+def is_safe(board: List[int], row: int, col: int) -> bool:
     """Check if it's safe to place a queen at board[row][col]"""
     for i in range(row):
         if col == board[i] or \
@@ -14,9 +15,9 @@ def is_safe(board, row, col):
     return True
 
 
-def solve_nqueens(n):
+def solve_nqueens(n: int) -> List[List[int]]:
     """Solve the N Queens problem and return all solutions"""
-    def place_queens(row):
+    def place_queens(row: int) -> None:
         """Backtracking function to solve the NQueens problem"""
         if row == n:
             solutions.append(board[:])
@@ -27,13 +28,13 @@ def solve_nqueens(n):
                 place_queens(row + 1)
                 board[row] = -1
 
-    solutions = []
-    board = [-1] * n
+    solutions: List[List[int]] = []
+    board: List[int] = [-1] * n
     place_queens(0)
     return solutions
 
 
-def format_and_print_solutions(solutions):
+def format_and_print_solutions(solutions: List[List[int]]) -> None:
     """Format and print all solutions in the required format"""
     for solution in solutions:
         result = []
@@ -42,7 +43,7 @@ def format_and_print_solutions(solutions):
         print(result)
 
 
-def main():
+def main() -> None:
     """
     Main function to check command line arguments
     and solve the N Queens problem"""
