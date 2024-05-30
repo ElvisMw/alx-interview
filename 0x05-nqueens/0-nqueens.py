@@ -21,7 +21,7 @@ def is_safe(board, row, col):
 def solve_nqueens(n):
     """Solve the N Queens problem and return all solutions"""
     def backtrack(row):
-        """Backtracking function to solve the N Queens problem"""
+        """Backtracking function to solve the N Queens problem """
         if row == n:
             solutions.append(board[:])
             return
