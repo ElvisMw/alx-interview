@@ -7,13 +7,9 @@ import sys
 def is_safe(board, row, col):
     """Check if it's safe to place a queen at board[row][col]"""
     for i in range(row):
-        if board[i] == col:
-            return False
-    """ Check if there is a queen in the same diagonal"""
-    for i in range(row):
-        if board[i] - i == col - row:
-            return False
-        if board[i] + i == col + row:
+        if board[i] == col or \
+           board[i] - i == col - row or \
+           board[i] + i == col + row:
             return False
     return True
 
@@ -21,7 +17,7 @@ def is_safe(board, row, col):
 def solve_nqueens(n):
     """Solve the N Queens problem and return all solutions"""
     def backtrack(row):
-        """Backtracking function to solve the N Queens problem """
+        """Backtracking function to solve the N Queens problem"""
         if row == n:
             solutions.append(board[:])
             return
@@ -45,7 +41,8 @@ def print_solutions(solutions):
 
 
 def main():
-    """Main function to check command line arguments and
+    """
+    Main function to check command line arguments and
     solve the N Queens problem"""
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
