@@ -2,7 +2,7 @@
 
 const request = require('request');
 
-// Parse movie ID from command-line arguments
+// Parse movie ID from command-line arguments.
 const movieID = process.argv[2];
 
 // Construct URL for movie information
