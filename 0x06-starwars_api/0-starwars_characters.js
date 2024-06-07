@@ -21,7 +21,7 @@ request(movieURL, (error, response, body) => {
   // Extract list of characters associated with the movie
   const characters = movieData.characters;
 
-  // Iterate over the characters and display their names.
+  // Iterate over the characters and display their names
   characters.forEach(characterURL => {
     request(characterURL, (error, response, body) => {
       if (error) {
