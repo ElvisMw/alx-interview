@@ -14,7 +14,7 @@ def print_stats(file_size, status_counts):
 
 
 def signal_handler(sig, frame):
-    """Handles the keyboard interruption signal to print stats."""
+    """Handles the keyboard interruption signal to print stats"""
     print_stats(file_size, status_counts)
     sys.exit(0)
 
