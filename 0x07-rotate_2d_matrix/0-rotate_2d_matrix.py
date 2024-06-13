@@ -10,20 +10,20 @@ def rotate_2d_matrix(matrix: List[List[int]]) -> None:
     """
     Rotate a 2D matrix 90 degrees clockwise in place.
 
-    :param matrix: List of lists, where each inner list
-    represents a row in the matrix.
+    :param matrix: List of lists, where each inner list represents
+    a row in the matrix.
     :return: None. The matrix is modified in place.
     """
     n = len(matrix)
 
     """ Step 1: Transpose the matrix """
-    for e in range(n):
-        for m in range(e, n):
-            matrix[e][m], matrix[m][e] = matrix[m][e], matrix[e][m]
+    for i in range(n):
+        for j in range(i, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
     """ Step 2: Reverse each row """
-    for e in range(n):
-        matrix[e].reverse()
+    for i in range(n):
+        matrix[i].reverse()
 
 
 def print_matrix(matrix: List[List[int]]) -> None:
