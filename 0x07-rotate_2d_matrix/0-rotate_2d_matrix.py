@@ -1,38 +1,23 @@
 #!/usr/bin/python3
+
 """
 Rotate 2D Matrix module
 """
 
-from typing import List
 
-
-def rotate_2d_matrix(matrix: List[List[int]]) -> None:
+def rotate_2d_matrix(matrix):
     """
-    Rotate a 2D matrix 90 degrees clockwise in place.
+    Rotate a 2D matrix clockwise by 90 degrees.
 
-    :param matrix: List of lists, where each inner list represents
-    a row in the matrix.
-    :return: None. The matrix is modified in place.
+    Args:
+        matrix (List[List[int]]): The input matrix to be rotated.
+
+    Returns:
+        None: The matrix is modified in-place.
     """
-    n = len(matrix)
+    n = len(matrix[0])
 
-    """ Step 1: Transpose the matrix """
-    for i in range(n):
-        for j in range(i, n):
-            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
-
-    """ Step 2: Reverse each row """
-    for i in range(n):
-        matrix[i].reverse()
-
-
-def print_matrix(matrix: List[List[int]]) -> None:
-    """
-    Print a 2D matrix in a formatted way.
-
-    :param matrix: List of lists, where each inner list represents
-    a row in the matrix.
-    :return: None. The matrix is printed row by row.
-    """
-    for row in matrix:
-        print(row)
+    """ Iterate over the columns of the matrix starting from the last one. """
+    for m in range(n - 1, -1, -1):
+        for e in range(0, n):
+            matrix[e].append(matrix[m].pop(0))
