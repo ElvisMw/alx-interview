@@ -17,7 +17,7 @@ def rotate_2d_matrix(matrix):
     """
     n = len(matrix[0])
 
-    """ Iterate over the columns of the matrix starting from the last one. """
+    """ Iterate over the columns of the matrix starting from the last one."""
     for m in range(n - 1, -1, -1):
         for e in range(0, n):
             matrix[e].append(matrix[m].pop(0))
