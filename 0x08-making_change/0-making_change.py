@@ -2,6 +2,7 @@
 """ Making Change """
 from typing import List
 
+
 def makeChange(coins: List[int], total: int) -> int:
     """
     Determine the fewest number of coins needed to meet a
