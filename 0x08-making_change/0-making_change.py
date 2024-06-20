@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-""" Making Change"""
+""" Making Change """
 from typing import List
-
 
 def makeChange(coins: List[int], total: int) -> int:
     """
@@ -13,9 +12,16 @@ def makeChange(coins: List[int], total: int) -> int:
     :return: Fewest number of coins needed to meet total, or
     -1 if it's not possible
     """
-    coins.sort(reverse=True)
-    dp = [0] + [float('inf')] * total
+    if total <= 0:
+        return 0
+
+    """ Initialize DP array with a value greater than any possible result """
+    dp = [float('inf')] * (total + 1)
+    dp[0] = 0
+
     for coin in coins:
         for x in range(coin, total + 1):
-            dp[x] = min(dp[x], dp[x - coin] + 1)
+            if dp[x - coin] != float('inf'):
+                dp[x] = min(dp[x], dp[x - coin] + 1)
+
     return dp[total] if dp[total] != float('inf') else -1
