@@ -14,14 +14,17 @@ def makeChange(coins: List[int], total: int) -> int:
     """
     if total <= 0:
         return 0
-
-    """ Initialize DP array with a value greater than any possible result """
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-
-    for coin in coins:
-        for x in range(coin, total + 1):
-            if dp[x - coin] != float('inf'):
-                dp[x] = min(dp[x], dp[x - coin] + 1)
-
-    return dp[total] if dp[total] != float('inf') else -1
+    rem = total
+    coins_count = 0
+    coin_idx = 0
+    sorted_coins = sorted(coins, reverse=True)
+    e = len(coins)
+    while rem > 0:
+        if coin_idx >= e:
+            return -1
+        if rem - sorted_coins[coin_idx] >= 0:
+            rem -= sorted_coins[coin_idx]
+            coins_count += 1
+        else:
+            coin_idx += 1
+    return coins_count
