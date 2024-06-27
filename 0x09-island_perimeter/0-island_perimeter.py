@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """ Module that contains the island_perimeter function. """
 
-
-def island_perimeter(grid: list[list[int]]) -> int:
+def island_perimeter(grid):
     """Calculate the perimeter of all land cells in a grid.
 
     Args:
@@ -12,10 +11,9 @@ def island_perimeter(grid: list[list[int]]) -> int:
     Returns:
         int: The total perimeter of all land cells.
     """
-
-    perimeter: int = 0
-    rows: int = len(grid)
-    cols: int = len(grid[0])
+    perimeter = 0
+    rows = len(grid)
+    cols = len(grid[0])
 
     for i in range(rows):
         for j in range(cols):
