@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ Module that contains the island_perimeter function. """
 
+
 def island_perimeter(grid):
     """Calculate the perimeter of all land cells in a grid.
 
